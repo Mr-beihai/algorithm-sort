@@ -12,7 +12,6 @@
 #include <iostream>
 
 using namespace std;
-using field = char [50];
 
 const int DefaultSize = 100;
 
@@ -20,30 +19,28 @@ template<class T>
 class Element{
 public:
     T key;
-    field otherdata;
-    Element<T>& operator = (Element<T>& x){
+    Element<T>& operator= (Element<T>& x){
         key = x.key;
-        otherdata = x.otherdata;
-        return this;
+        return *this;
     }
     bool operator == (Element<T>& x){
         return key == x.key;
     }
     bool operator <= (Element<T>& x){
-        return key == x.key;
+        return key <= x.key;
     }
     bool operator > (Element<T>& x){
-        return key == x.key;
+        return key > x.key;
     }
     bool operator < (Element<T>& x){
-        return key == x.key;
+        return key < x.key;
     }
 };
 
 template<class T>
-class dataList{
+class DataList{
 public:
-    dataList(int maxSz = DefaultSize):maxSize(maxSz),currentSize(0){
+	DataList(int maxSz = DefaultSize):maxSize(maxSz),currentSize(0){
         Vector = new Element<T>[maxSize];
     }
     void Swap(Element<T>& x,Element<T>& y){
@@ -52,10 +49,27 @@ public:
         y = temp;
     }
     int Length(){return currentSize;}
-    Element<T>& operator [](int i){
+    Element<T>& operator[](int i){
         return Vector[i];
     };
+
     int Partition(const int low,const int higth);
+
+    bool addEle(Element<T>& x){
+    	if(currentSize < maxSize){
+    		currentSize = currentSize + 1;
+    		Vector[currentSize] = x;
+    		return true;
+    	}
+    	std::cout<<" The number of currentSize equally maxSize,so you cannot add an element! "<<endl;
+    	return false;
+    }
+    void printInfo(){
+    	for(int i = 0;i<currentSize;i++){
+    		cout<<" "<<Vector[i].key;
+    	}
+    	cout<<endl;
+    }
 private:
     Element<T>* Vector;
     int maxSize;

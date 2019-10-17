@@ -31,7 +31,7 @@ void InsertSort(DataList<T>& L,const int left,const int right){
 
 }
 ```
-```
+```c
 original data :
  0 7 49 73 58 30 72 44 78 23
 begin sort data :

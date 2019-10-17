@@ -15,10 +15,9 @@
 using namespace std;
 
 int main() {
-	cout << "**** Insertion sort ****" << endl;
 	DataList<int> *list = new DataList<int>();
 	Element<int> *ele;
-	for(int i = 0;i<20;i++){
+	for(int i = 0;i<10;i++){
 		ele = new Element<int>();
 		ele->key = rand()%100;
 		list->addEle(*ele);
@@ -26,6 +25,7 @@ int main() {
 	cout << "original data : " << endl;
 	list->printInfo();
 
+//  Test the refs type.
 //	cout << typeid(list).name() << endl;
 //	cout << typeid(*list).name() << endl;
 //	cout << typeid(list->Vector).name() << endl;
@@ -34,8 +34,9 @@ int main() {
 //	cout << typeid((*list)[1]).name() << endl;
 //	cout << typeid(list->getEle(1)).name() << endl;
 
-	InsertSort(*list,0,20);
-
+	cout << "begin sort data : " << endl;
+	cout << "**** Insertion sort ****" << endl;
+	InsertSort(*list,0,list->Length());
 	list->printInfo();
 	return 0;
 }

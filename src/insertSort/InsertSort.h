@@ -18,15 +18,17 @@ void InsertSort(DataList<T>& L,const int left,const int right){
     int i,j;
     for(i = left+1; i < right; i++){
         if(L[i]<L[i-1]){
-        	cout<< "hit the target, i = " << i;
-        	cout<< ", L[i].key = "<< L[i].key <<endl;
-            temp = L[i];
+        	cout<< "loop hit the target, index = " << i;
+        	cout<< ", L[i].key = "<< L[i].key <<" move into temp"<<endl;
+            temp = L[i];//move into temp
             j=i-1;
             do{
+            	cout<< "Moving :"<< L[j].key <<", move the big element to right"<<endl;
                 L[j+1] = L[j];
                 j--;
                 L.printInfo();
             }while (j >= left && temp < L[j]);
+            cout<< "Move over :"<< temp.key <<" move to index "<<(j+1)<< endl;
             L[j+1] = temp;
             L.printInfo();
         }

@@ -51,7 +51,7 @@ void BinaryInsertSort(DataList<T>& L,const int left,const int right){
     	high=i-1;
         if(L[i]<L[i-1]){
         	cout<< "loop hit the target, index = " << i;
-        	cout<< ", L[i].key = "<< L[i].key <<" move into temp"<<endl;
+        	cout<< ", L[i].key = "<< L[i].key <<" move into temp，begin binary search ..."<<endl;
             temp = L[i];//move into temp
             while(low <= high){
             	middle = (low + high)/2;
@@ -61,6 +61,7 @@ void BinaryInsertSort(DataList<T>& L,const int left,const int right){
             		low = middle + 1;
             	}
             }
+            cout<< "find the key = "<< low <<" & moving."<<endl;
 
             for(k = i-1;k>=low;k--){
             	L[k+1] = L[k];
@@ -78,18 +79,23 @@ void BinaryInsertSort(DataList<T>& L,const int left,const int right){
 template<class T>
 void ShellInsertSort(DataList<T>& L,const int left,const int right){
     Element<T> temp;
-    int i,j,gap = right-left+1;
+    int i,j,gap = right-left+1;//size add 1
     do{
     	gap = gap/3 + 1;
-    	for(i = left + gap;i<= right;i++){
+    	cout<< "This loop gap is = "<< gap <<endl;
+    	for(i = left + gap; i < right; i++){//反向计算避免边界值
     		if(L[i]<L[i-gap]){
+    			cout<< "loop hit the target,index i-gap="<<i-gap<<" ,i ="<<i<<endl ;
+    			cout<<L[i].key<<" exchange "<<L[i-gap].key<<endl;
     			temp = L[i];
     			j = i - gap;
     			do{
+    				//同一组向后继续比较替换
     				L[j+gap] = L[j];
     				j = j-gap;
     			}while(j>=left && temp<L[j]);
     			L[j+gap]=temp;
+    			L.printInfo();
     		}
     	}
     }while(gap > 1);

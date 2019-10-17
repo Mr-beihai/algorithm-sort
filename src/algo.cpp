@@ -35,8 +35,17 @@ int main() {
 //	cout << typeid(list->getEle(1)).name() << endl;
 
 	cout << "begin sort data : " << endl;
-	cout << "**** Insertion sort ****" << endl;
-	InsertSort(*list,0,list->Length());
-	list->printInfo();
+
+//	cout << "**** Insertion sort ****" << endl;
+//	InsertSort(*list,0,list->Length());
+
+
+//	cout << "**** Binary Insertion sort ****" << endl;
+//	BinaryInsertSort(*list,0,list->Length());
+
+	cout << "**** Shell Insertion sort ****" << endl;
+	ShellInsertSort(*list,0,list->Length());
+
+
 	return 0;
 }

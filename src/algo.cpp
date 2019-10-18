@@ -49,6 +49,7 @@ int main() {
 
 	cout << "**** Quick sort ****" << endl;
 	QuickSort(*list, 0, list->Length());
+	list->printInfo();
 
 	return 0;
 }

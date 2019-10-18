@@ -11,15 +11,17 @@
 #include <typeinfo>
 #include "data/DataList.h"
 #include "insertSort/InsertSort.h"
+#include "qSort/QSort.h"
 
 using namespace std;
+int dataSize = 10;
 
 int main() {
 	DataList<int> *list = new DataList<int>();
 	Element<int> *ele;
-	for(int i = 0;i<10;i++){
+	for (int i = 0; i < dataSize; i++) {
 		ele = new Element<int>();
-		ele->key = rand()%100;
+		ele->key = rand() % 100;
 		list->addEle(*ele);
 	}
 	cout << "original data : " << endl;
@@ -39,13 +41,14 @@ int main() {
 //	cout << "**** Insertion sort ****" << endl;
 //	InsertSort(*list,0,list->Length());
 
-
 //	cout << "**** Binary Insertion sort ****" << endl;
 //	BinaryInsertSort(*list,0,list->Length());
 
-	cout << "**** Shell Insertion sort ****" << endl;
-	ShellInsertSort(*list,0,list->Length());
+//	cout << "**** Shell Insertion sort ****" << endl;
+//	ShellInsertSort(*list,0,list->Length());
 
+	cout << "**** Quick sort ****" << endl;
+	QuickSort(*list, 0, list->Length());
 
 	return 0;
 }
